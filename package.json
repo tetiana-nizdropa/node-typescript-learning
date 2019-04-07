@@ -6,11 +6,11 @@
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch & nodemon dist",
-    "test": "tsc && nyc --reporter=text mocha dist/**/*.spec.js",
     "lint": "tslint -p tsconfig.json",
     "tsc": "tsc",
     "gulp": "gulp",
-    "build_with_babel": "babel src --out-dir dist"
+    "build_with_babel": "babel src --out-dir dist",
+    "testJasmine": "nyc --reporter=text jasmine dist/**/*.spec.js"
   },
   "author": "Tetiana Nizdropa",
   "license": "ISC",
@@ -20,7 +20,7 @@
     "@babel/node": "^7.2.2",
     "@babel/preset-env": "^7.4.2",
     "@types/gulp": "^4.0.6",
-    "@types/mocha": "^5.2.6",
+    "@types/jasmine": "^3.3.12",
     "@types/node": "^11.11.6",
     "gulp": "^4.0.0",
     "gulp-babel": "^8.0.0",
@@ -33,7 +33,7 @@
     "gulp-tslint": "^8.1.4",
     "gulp-typescript": "^5.0.1",
     "gulp-util": "^3.0.8",
-    "mocha": "^6.0.2",
+    "jasmine": "^3.4.0",
     "nyc": "^13.3.0",
     "supertest": "^4.0.2",
     "ts-node": "^8.0.3",

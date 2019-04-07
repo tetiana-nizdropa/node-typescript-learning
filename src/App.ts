@@ -1,5 +1,5 @@
 // greeter.ts
-exports.greeter = function (person: string) {
+export function greeter (person: string) {
   return `Hello ${person}!`;
-};
-console.log(exports.greeter('Tetiana'));
+}
+console.log(greeter('Tetiana'));
