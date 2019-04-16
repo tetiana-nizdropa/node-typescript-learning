@@ -43,7 +43,7 @@ describe('Testing block for asynchronous functions', () => {
         it('return error for one of the functions', (done) => {
             promisesLib.parallelPromise(promisesLib.raiseError(1), promisesLib.raiseError(2))
                 .then((res: [number, number]) => {
-                    // we will never ber here
+                    // we will never be here
                 })
                 .catch((err) => {
                     expect(err).not.toBeNull();

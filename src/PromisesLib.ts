@@ -1,13 +1,9 @@
-function getRandomIntInclusive(min: number, max: number): number {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1) + min);
-}
+const helper = require('./Helper');
 
 function delayRandomNumber(min: number, max: number, delay: number = 5000): Promise<number> {
     return new Promise((resolve) => {
         setTimeout(() => {
-            resolve(getRandomIntInclusive(min, max));
+            resolve(helper.getRandomIntInclusive(min, max));
         },
         delay);
     });
@@ -16,10 +12,10 @@ function delayRandomNumber(min: number, max: number, delay: number = 5000): Prom
 function addRandomNumbers(min: number, max: number): Promise<number> {
     return delayRandomNumber(min, max)
         .then((res) => {
-            return res + getRandomIntInclusive(min, max);
+            return res + helper.getRandomIntInclusive(min, max);
         })
         .then((res) => {
-            return res + getRandomIntInclusive(min, max);
+            return res + helper.getRandomIntInclusive(min, max);
         });
 }
 
