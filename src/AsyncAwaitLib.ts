@@ -1,4 +1,13 @@
 const helperLib = require('./Helper');
+const winston = require('winston');
+
+// import winston, {createLogger, transports} from 'winston';
+const logger = winston.createLogger({
+    transports: [
+        new winston.transports.Console(),
+        new winston.transports.File({ filename: 'C:\\temp\\testLogs\\error.log', level: 'error' })
+    ]
+});
 
 async function delayRandomNumberAsync(min: number, max: number, delay: number = 5000): Promise<number> {
     const randomInt: Promise<number> = new Promise((resolve) => {
@@ -19,7 +28,7 @@ async function addRandomNumbersAsync(min: number, max: number, quantity: number 
 }
 
 async function raiseErrorAsync(test: number) {
-    const errorPromise: Promise<number> = new Promise((resolve, reject) => {
+    return await new Promise((resolve, reject) => {
         if (test === 1) {
             resolve(1);
         }
@@ -27,12 +36,6 @@ async function raiseErrorAsync(test: number) {
             reject(new Error('Passed the wrong number. Please check'));
         }
     });
-    try {
-        return await errorPromise;
-    }
-    catch (err) {
-        throw new Error(err.message);
-    }
 }
 
 async function parallelPromiseAsync(promise_first: number, promise_second: number): Promise<[number, number]> {
@@ -42,6 +45,8 @@ async function parallelPromiseAsync(promise_first: number, promise_second: numbe
         });
     return await parallelPromise;
 }
+
+logger.log('error', 'Hi, there');
 
 module.exports = {
     delayRandomNumberAsync,
