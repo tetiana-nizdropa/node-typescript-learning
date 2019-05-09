@@ -20,12 +20,12 @@ describe('Testing of the build in data structures methods', () => {
         });
         // Test for every() method
         it('every method test should check each element in the array is not 2', () => {
-            const equalTwo: boolean = firstArray.every(element => element == 2);
+            const equalTwo: boolean = firstArray.every(element => element === 2);
             expect(equalTwo).not.toBe(true);
         });
         // Test for filter() method
         it('filter method test should check if in the array one element with value 5', () => {
-            const filltered: number[] = secondArray.filter(element => element == 5);
+            const filltered: number[] = secondArray.filter(element => element === 5);
             expect(filltered.length).toEqual(1);
         });
         // Test for forEach() method

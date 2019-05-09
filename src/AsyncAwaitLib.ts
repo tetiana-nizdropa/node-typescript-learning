@@ -9,7 +9,7 @@ const logger = winston.createLogger({
     ]
 });
 
-async function delayRandomNumberAsync(min: number, max: number, delay: number = 5000): Promise<number> {
+async function delayRandomNumberAsync(min: number, max: number, delay = 5000): Promise<number> {
     const randomInt: Promise<number> = new Promise((resolve) => {
         setTimeout(() => {
             resolve(helperLib.getRandomIntInclusive(min, max));
@@ -19,8 +19,8 @@ async function delayRandomNumberAsync(min: number, max: number, delay: number = 
     return await randomInt;
 }
 
-async function addRandomNumbersAsync(min: number, max: number, quantity: number = 3): Promise<number> {
-    let sum: number = 0;
+async function addRandomNumbersAsync(min: number, max: number, quantity = 3): Promise<number> {
+    let sum = 0;
     for (let i = 0; i < quantity; i++) {
         sum += await delayRandomNumberAsync(min, max, 1000);
     }
@@ -38,8 +38,8 @@ async function raiseErrorAsync(test: number) {
     });
 }
 
-async function parallelPromiseAsync(promise_first: number, promise_second: number): Promise<[number, number]> {
-    const parallelPromise: Promise<[number, number]> = Promise.all([promise_first, promise_second])
+async function parallelPromiseAsync(promiseFirst: number, promiseSecond: number): Promise<[number, number]> {
+    const parallelPromise: Promise<[number, number]> = Promise.all([promiseFirst, promiseSecond])
         .then((res: [number, number]) => {
             return res;
         });

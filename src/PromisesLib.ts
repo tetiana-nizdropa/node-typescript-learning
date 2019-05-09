@@ -1,6 +1,6 @@
 const helper = require('./Helper');
 
-function delayRandomNumber(min: number, max: number, delay: number = 5000): Promise<number> {
+function delayRandomNumber(min: number, max: number, delay = 5000): Promise<number> {
     return new Promise((resolve) => {
         setTimeout(() => {
             resolve(helper.getRandomIntInclusive(min, max));
@@ -30,8 +30,8 @@ function raiseError(test: number): Promise<number> {
     });
 }
 
-function parallelPromise(promise_first: number, promise_second: number): Promise<[number, number]> {
-    return Promise.all([promise_first, promise_second])
+function parallelPromise(promiseFirst: number, promiseSecond: number): Promise<[number, number]> {
+    return Promise.all([promiseFirst, promiseSecond])
         .then((res: [number, number]) => {
             return res;
         });
